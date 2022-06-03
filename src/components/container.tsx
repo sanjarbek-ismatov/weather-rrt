@@ -1,7 +1,9 @@
-import Weather from "./api/weatherApi";
+import { useState } from "react";
+import Weather from "./api/weatherComponent";
 
 function Container() {
-  return <Weather city="tashkent" />;
+  const [text, setText] = useState<string>("");
+  return <Weather handleChange={(e) => setText(e.target.value)} city={text} />;
 }
 
 export default Container;
