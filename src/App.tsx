@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./logo.svg";
+import Container from "./components/container";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <p>weather</p>;
+  return <Container />;
 }
 
 export default App;
