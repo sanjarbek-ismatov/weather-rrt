@@ -13,8 +13,13 @@ export type stateFilled = {
       icon: string;
     };
   };
-  code?: string;
-  message?: string;
+  message: string;
+  response: {
+    data: {
+      cod?: string;
+      message?: string;
+    };
+  };
 };
 export type weatherProps = {
   city: string;
