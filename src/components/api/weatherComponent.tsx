@@ -8,14 +8,16 @@ function Weather({ city, handleChange }: weatherProps) {
   );
 
   const fetchWeather = async () => {
-    await axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c83594dd15b82e8b1ed09847827831b3`
-      )
-      .then((data: any) => setState(data))
-      .catch((error) => {
-        setState(error);
-      });
+    if (city !== "" && city !== "#") {
+      await axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c83594dd15b82e8b1ed09847827831b3`
+        )
+        .then((data: any) => setState(data))
+        .catch((error) => {
+          setState(error);
+        });
+    }
   };
   return (
     <>
@@ -26,6 +28,11 @@ function Weather({ city, handleChange }: weatherProps) {
               onChange={handleChange}
               value={city}
               placeholder="Enter Your Location"
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  fetchWeather();
+                }
+              }}
             />
 
             <button onClick={fetchWeather}>Search</button>
@@ -44,7 +51,12 @@ function Weather({ city, handleChange }: weatherProps) {
                   {state.data.name}
                   <sup>{state.data.sys.country}</sup>
                 </h1>
-                <p>{Math.floor(state.data.main.temp - 273)}</p>
+                <p>
+                  {Math.floor(state.data.main.temp - 273) >= 0
+                    ? "+" + Math.floor(state.data.main.temp - 273)
+                    : Math.floor(state.data.main.temp - 273)}
+                  °C
+                </p>
               </>
             )
           )}

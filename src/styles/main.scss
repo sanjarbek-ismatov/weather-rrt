@@ -7,7 +7,10 @@
 }
 .container {
   color: #fff;
-  background: #3338d5;
+  background-image: url("../images/weather.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -16,6 +19,8 @@
   .main {
     display: flex;
     width: 100%;
+
+    flex-wrap: wrap;
     .left-container {
       width: 50%;
       display: flex;
@@ -28,25 +33,68 @@
           height: 100%;
           width: 70%;
           border-radius: 25px 0 0 25px;
-          border: 1px solid rgb(192, 192, 192);
+          border: 1px solid rgb(0, 0, 0);
           outline: none;
+          color: rgb(0, 0, 0);
           font-size: 25px;
           padding: 0 30px;
           text-transform: capitalize;
+          background-color: transparent;
         }
         button {
           height: 100%;
           width: 30%;
           border-radius: 0 25px 25px 0;
-          border: 1px solid rgb(192, 192, 192);
+          border: 1px solid rgb(0, 0, 0);
+          background: transparent;
           font-size: 25px;
           cursor: pointer;
+          transition: 0.3s;
+        }
+        button:hover {
+          background: #000;
+          color: #fff;
         }
       }
     }
     .right-container {
       width: 50%;
       text-align: center;
+      font-size: 40px;
     }
   }
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    backdrop-filter: blur(10px);
+    .main {
+      color: #000;
+      display: block;
+      .left-container,
+      .right-container {
+        margin: 30px auto 0;
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .container {
+    .main {
+      // .left-container {
+      //   .input {
+      //     input {
+      //       color: #000;
+      //       border-color: #000;
+      //     }
+      //   }
+      // }
+      .right-container {
+        font-size: 30px;
+      }
+    }
+  }
+}
+::placeholder {
+  color: #000;
 }
