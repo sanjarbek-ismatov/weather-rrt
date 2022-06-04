@@ -20,26 +20,35 @@ function Weather({ city, handleChange }: weatherProps) {
   return (
     <>
       <div className="main">
-        <div className="input">
-          <input onChange={handleChange} value={city} />
-          <button onClick={fetchWeather}>Search</button>
-        </div>
-        {state?.message ? (
-          <div className="error">
-            <h1>{state.response.data.message}</h1>
-            <p> Error code: {state.response.data.cod}</p>
+        <div className="left-container">
+          <div className="input">
+            <input
+              onChange={handleChange}
+              value={city}
+              placeholder="Enter Your Location"
+            />
+
+            <button onClick={fetchWeather}>Search</button>
           </div>
-        ) : (
-          state?.data && (
-            <div className="weather-info">
-              <h1>
-                {state.data.name}
-                <sup>{state.data.sys.country}</sup>
-              </h1>
-              <p>{Math.floor(state.data.main.temp - 273)}</p>
-            </div>
-          )
-        )}
+        </div>
+        <div className="right-container">
+          {state?.message ? (
+            <>
+              <h1>{state.response.data.message}</h1>
+              <p> Error code: {state.response.data.cod}</p>
+            </>
+          ) : (
+            state?.data && (
+              <>
+                <h1>
+                  {state.data.name}
+                  <sup>{state.data.sys.country}</sup>
+                </h1>
+                <p>{Math.floor(state.data.main.temp - 273)}</p>
+              </>
+            )
+          )}
+        </div>
       </div>
     </>
   );
