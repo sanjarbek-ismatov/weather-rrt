@@ -1,4 +1,6 @@
 # weather-rrt
-```js
- console.log('pok')
- ```
+Weather with openweathermap api
+# used:
+- React
+- Typescript
+- Sass
