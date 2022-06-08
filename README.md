@@ -1,13 +1,14 @@
 # weather-rrt
 Weather with openweathermap api
-# used:
+# USED:
 - React
 - Typescript
 - Sass
-# setup
+- Openweathermap api
+# SETUP:
 ```shell
 git clone https://github.com/uzweb-code/weather-rrt.git
-cd project-directory
+cd weather-rrt
 npm install
 npm run dev
 
